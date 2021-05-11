@@ -1,0 +1,6 @@
+# Project exclude paths
+/common-api/target/
+/consumer-order8001/target/
+/eureka-server-7001/target/
+/eureka-server-7002/target/
+/provider-payment9001/target/
