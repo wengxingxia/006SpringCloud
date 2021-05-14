@@ -1,0 +1,15 @@
+server:
+  port: 9101
+
+
+spring:
+  application:
+    # 微服务名称
+    name: wechatService
+  cloud:
+    zookeeper:
+      #Zookeeper服务连接地址，如果是集群，使用逗号分隔
+      connect-string: 192.168.43.51:2181,192.168.43.51:2181,192.168.43.51:2181
+      discovery:
+        # 服务实例注册进zookeeper的host
+        instance-host: 127.0.0.1

@@ -12,7 +12,11 @@
         <module>eureka-server-7002</module>
         <module>common-api</module>
         <module>provider-payment9001</module>
+        <module>provider-payment9002</module>
         <module>consumer-order8001</module>
+        <module>provider-zk-wechat9101</module>
+        <module>provider-zk-wechat9102</module>
+        <module>consumer-zk-user8101</module>
     </modules>
     <packaging>pom</packaging>
 
