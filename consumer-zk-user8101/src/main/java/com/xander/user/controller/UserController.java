@@ -42,7 +42,6 @@ public class UserController {
             this.logger.info("serviceId: " + instance.getServiceId() + "\t" + "host: " + instance.getHost() + "\t"
                     + "port: " + instance.getPort() + "\t" + "uri: " + instance.getUri());
         }
-        WechatInfo wechatInfo = WechatInfo.newInstance().setOpenId(userId + "-openId").setUserName(userId + "-name");
         return this.restTemplate.getForObject("http://" + WECHAT_SERVICE + "/wechat/getByUserId/" + userId, CommonResult.class);
     }
 }

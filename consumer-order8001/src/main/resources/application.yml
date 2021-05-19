@@ -20,3 +20,17 @@ spring:
   application:
     # 微服务名称
     name: orderService
+
+### 全局Ribbon 配置
+ribbon:
+  #启用rest client配置
+  restclient:
+    enabled: true
+  # http建立socket超时时间,毫秒，默认是1000
+  ConnectTimeout: 1000
+  # http读取响应socket超时时间，默认是1000毫秒
+  ReadTimeout: 5000
+  # 同一台实例最大重试次数,不包括首次调用，默认是1
+  MaxAutoRetries: 0
+  # 重试负载均衡其他的实例最大重试次数,不包括首次server
+  MaxAutoRetriesNextServer: 0
