@@ -10,15 +10,18 @@
         <module name="eureka-server-7001" />
         <module name="eureka-server-7002" />
         <module name="provider-zk-wechat9101" />
+        <module name="consumer-openFeign-order8002" />
         <module name="provider-payment9001" />
         <module name="consumer-order8001" />
         <module name="provider-payment9002" />
         <module name="provider-zk-wechat9102" />
+        <module name="gateway-6001" />
         <module name="consumer-zk-user8101" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="eureka-server-7003" target="1.8" />
+      <module name="provider-openFeign-payment9003" target="1.8" />
       <module name="zk-consumer-user8102" target="1.8" />
     </bytecodeTargetLevel>
   </component>

@@ -1,0 +1,45 @@
+server:
+  port: 8002
+
+
+eureka:
+  client:
+    #表示是否将自己注册进EurekaServer默认为true。
+    register-with-eureka: true
+    #是否从EurekaServer抓取已有的注册信息，默认为true。单节点无所谓，集群必须设置为true才能配合ribbon使用负载均衡
+    fetchRegistry: true
+    service-url:
+      # 集群版-
+        defaultZone: http://eureka7001.com:7001/eureka,http://eureka7002.com:7002/eureka
+  instance:
+    # 服务实例id
+    instance-id: order8002
+    #访问路径可以显示IP地址
+    prefer-ip-address: true
+spring:
+  application:
+    # 微服务名称
+    name: orderService
+
+### 全局Ribbon 配置
+ribbon:
+  #启用rest client配置
+  restclient:
+    enabled: true
+  # http建立socket超时时间,毫秒，默认是1000
+  ConnectTimeout: 1000
+  # http读取响应socket超时时间，默认是1000毫秒
+  ReadTimeout: 5000
+
+logging:
+  level:
+    # 配置 PaymentOpenFeignService 的日志级别为 debug，这样才能打印 openFeign 相关的日志
+    com.xander.order.service.PaymentOpenFeignService: debug
+
+feign:
+  client:
+    config:
+      default: # 微服务id: default代表全局默认配置
+        loggerLevel: FULL #   配置 open feign 的日志打印级别
+  hystrix:
+    enabled: false # 在 feign 中启动 Hystrix 支持
