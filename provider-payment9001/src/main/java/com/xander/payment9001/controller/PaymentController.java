@@ -30,11 +30,16 @@ public class PaymentController {
 
     @GetMapping(value = "/get/{id}")
     public CommonResult<Payment> getPaymentById(@PathVariable("id") Long id) {
+        logger.info("paymentService getPaymentById开始，id=" + id);
         if (id != null && id % 2 == 0) {
             Payment payment = Payment.newInstance().setSerial(UUID.randomUUID().toString()).setId(id);
-            return CommonResult.newInstance().setCode(200).setMessage("查询成功,serverPort：" + serverPort).setData(payment);
+            CommonResult result = CommonResult.newInstance().setCode(200).setMessage("查询成功,serverPort：" + serverPort).setData(payment);
+            logger.info("paymentService getPaymentById结束，id=" + id);
+            return result;
         } else {
-            return CommonResult.newInstance().setCode(444).setMessage("没有对应记录,查询ID: " + id).setData(null);
+            CommonResult result = CommonResult.newInstance().setCode(444).setMessage("没有对应记录,查询ID: " + id).setData(null);
+            logger.info("paymentService getPaymentById结束，id=" + id);
+            return result;
         }
     }
 
@@ -45,10 +50,12 @@ public class PaymentController {
      */
     @GetMapping(value = "/excep")
     public CommonResult<Payment> excep() {
-        this.logger.info("excep-----" + LocalDateTime.now());
+        logger.info("paymentService excep 开始-----" + LocalDateTime.now());
         //模拟业务处理异常
         int div = 1 / 0;
-        return CommonResult.newInstance().setCode(200).setMessage("查询成功,serverPort：" + serverPort).setData(null);
+        CommonResult result = CommonResult.newInstance().setCode(200).setMessage("查询成功,serverPort：" + serverPort).setData(null);
+        logger.info("paymentService excep 结束-----" + LocalDateTime.now());
+        return result;
     }
 
     /**

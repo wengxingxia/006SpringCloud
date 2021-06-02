@@ -19,12 +19,15 @@ import reactor.core.publisher.Mono;
 @Component
 public class LogGlobalFilter implements GlobalFilter, Ordered {
     Logger logger = LoggerFactory.getLogger(this.getClass());
+
     @Override
     public Mono<Void> filter(ServerWebExchange exchange, GatewayFilterChain chain) {
         ServerHttpRequest request = exchange.getRequest();
         // 打印请求uri
-        logger.info("全局过滤器LogGlobeFilter：" + request.getURI().getPath());
-        return chain.filter(exchange);
+        logger.info("全局过滤器LogGlobeFilter开始：" + request.getURI().getPath());
+        Mono<Void> mono = chain.filter(exchange);
+        logger.info("全局过滤器LogGlobeFilter结束：" + request.getURI().getPath());
+        return mono;
     }
 
     @Override

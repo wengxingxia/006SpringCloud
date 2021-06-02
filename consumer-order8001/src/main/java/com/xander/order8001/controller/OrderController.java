@@ -14,7 +14,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 
+import javax.servlet.http.HttpServletRequest;
 import java.time.LocalDateTime;
+import java.util.Enumeration;
 
 /**
  * Description:
@@ -32,9 +34,22 @@ public class OrderController {
     @Autowired
     private RestTemplate restTemplate;
 
+    @Autowired
+    HttpServletRequest request;
+
     @GetMapping("/getPayment/{id}")
     public CommonResult<Payment> getPayment(@PathVariable("id") String id) {
-        return this.restTemplate.getForObject(PAYMENT_URL + "/payment/get/" + id, CommonResult.class);
+        logger.info("orderService getPayment开始，id=" + id);
+        //打印 请求头，验证sleuth在请求头中传播跟踪信息
+        Enumeration<String> enu = request.getHeaderNames();
+        while (enu.hasMoreElements()) {
+            String name = enu.nextElement();
+            if (name.startsWith("x-b3-"))
+                logger.info("orderService getPayment request headers，name=" + name + " ------ value=" + request.getHeader(name));
+        }
+        CommonResult result = this.restTemplate.getForObject(PAYMENT_URL + "/payment/get/" + id, CommonResult.class);
+        logger.info("orderService getPayment结束，id=" + id);
+        return result;
     }
 
     /**
@@ -44,7 +59,10 @@ public class OrderController {
      */
     @GetMapping(value = "/excep")
     public CommonResult<Payment> excep() {
-        return this.restTemplate.getForObject(PAYMENT_URL + "/payment/excep", CommonResult.class);
+        logger.info("orderService excep开始");
+        CommonResult result = this.restTemplate.getForObject(PAYMENT_URL + "/payment/excep", CommonResult.class);
+        logger.info("orderService excep结束");
+        return result;
     }
 
     /**

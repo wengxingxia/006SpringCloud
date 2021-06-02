@@ -20,3 +20,12 @@ spring:
   application:
     # 微服务名称
     name: paymentService
+  zipkin:
+    # 配置zipkin的服务地址
+    base-url: http://localhost:9411/
+  sleuth:
+    sampler:
+      # 跟踪信息收集采样比例，默认 0.1，为 1 是即 100%，收集所有，默认0.1(即10%)
+      probability: 1
+      # 每秒速率，即每秒最多能跟踪的请求，rate 优先，默认是10
+      rate: 20

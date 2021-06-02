@@ -21,6 +21,16 @@ logging:
 spring:
   application:
     name: gateway
+  zipkin:
+    # 配置zipkin的服务地址
+    base-url: http://localhost:9411/
+  sleuth:
+    sampler:
+      # 跟踪信息收集采样比例，默认 0.1，为 1 是即 100%，收集所有，默认0.1(即10%)
+      probability: 1
+      # 每秒速率，即每秒最多能跟踪的请求，rate 优先，默认是10
+      rate: 20
+
   cloud:
     gateway:
       routes:
@@ -39,6 +49,6 @@ spring:
             - name: FixedPathGateWayFilter
 
       # 开启根据 serviceId 转发，负载均衡也生效
-#      discovery:
-#        locator:
-#          enabled: true
+      discovery:
+        locator:
+          enabled: true
