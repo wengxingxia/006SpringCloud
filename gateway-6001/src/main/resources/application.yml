@@ -52,3 +52,5 @@ spring:
       discovery:
         locator:
           enabled: true
+          # route ID 转化小写
+          lower-case-service-id: true

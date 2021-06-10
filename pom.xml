@@ -19,6 +19,9 @@
         <module>consumer-zk-user8101</module>
         <module>consumer-openFeign-order8002</module>
         <module>gateway-6001</module>
+        <module>provider-naocs-8070</module>
+        <module>consumer-nacos-8080</module>
+        <module>provider-naocs-8071</module>
     </modules>
     <packaging>pom</packaging>
 
@@ -40,7 +43,7 @@
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
-            <!--spring cloud Hoxton.SR11-->
+            <!--spring cloud Hoxton.SR8-->
             <dependency>
                 <groupId>org.springframework.cloud</groupId>
                 <artifactId>spring-cloud-dependencies</artifactId>

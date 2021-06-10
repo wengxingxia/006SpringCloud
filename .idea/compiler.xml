@@ -6,17 +6,20 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="common-api" />
         <module name="eureka-server-7001" />
         <module name="eureka-server-7002" />
+        <module name="provider-zk-wechat9102" />
+        <module name="provider-naocs-8070" />
+        <module name="consumer-zk-user8101" />
+        <module name="provider-naocs-8071" />
+        <module name="common-api" />
         <module name="provider-zk-wechat9101" />
+        <module name="consumer-nacos-8080" />
         <module name="consumer-openFeign-order8002" />
         <module name="provider-payment9001" />
         <module name="consumer-order8001" />
         <module name="provider-payment9002" />
-        <module name="provider-zk-wechat9102" />
         <module name="gateway-6001" />
-        <module name="consumer-zk-user8101" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
